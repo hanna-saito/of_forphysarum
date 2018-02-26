@@ -20,7 +20,6 @@ void ofApp::setup(){
     sprintf(vid->tl.fname_p, "/Users/hannasaito/Documents/of_v0.9.8_osx_release/apps/myApps/of_forphysarum/frames_p/p%05d.png", vid->tl.n-1);
     cout << "ofApp:vid->tl.fname_c = " << vid->tl.fname_c << endl;
     vid->img_p.load(vid->tl.fname_p);
-    //img_b = vid->img_p; //何がしたいのか不明。→これを書くと赤いフレームのエラーが起きる。思い出した。粘菌2値化画像サンプル表示のための初期値でした。
     
     //最初のiPad画面描画・最初の起動時は単なる映画フレーム、2回目以降起動時は編集済みフレーム
     //粘菌画像が一枚も保存されていないなら
@@ -45,9 +44,6 @@ void ofApp::update(){
         img_b = itr.makeLabel(vid->th);
         vid->img_b_sample = img_b;
         
-        //画像保存　これで気付いたけど、白のとき一瞬映るのは閾値画像。
-        //RGBにグレースケールマップしてるから赤くなってる。
-        //なので、どこかで不必要に閾値画像の描写コードが入ってるはず　by sw
         sprintf(fname_b, "/Users/hannasaito/Documents/of_v0.9.8_osx_release/apps/myApps/of_forphysarum/frames_b/b%05d.png", vid->tl.n);
         img_b.save(fname_b);
         cout << "Makelabeled!" << endl;
